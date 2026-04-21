@@ -543,14 +543,15 @@ Write them a short, personalised friendship action plan (around 180 words). Stru
 Write in second person, warm and direct. No bullet symbols — use 1. 2. 3. for the steps. No markdown. Keep it human, not corporate.`;
 
   try {
+    const payload = {
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 1000,
+      messages: [{ role: 'user', content: prompt }]
+    };
     const res = await fetch('https://lingering-cake-4cd3quiet-social.kuveili3.workers.dev/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        messages: [{ role: 'user', content: prompt }]
-      })
+      body: JSON.stringify(payload)
     });
     const data = await res.json();
     const text = data.content?.find(b => b.type === 'text')?.text || 'Something went wrong — please try again.';
