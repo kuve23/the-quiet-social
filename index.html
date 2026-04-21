@@ -543,7 +543,12 @@ Write them a short, personalised friendship action plan (around 180 words). Stru
 Write in second person, warm and direct. No bullet symbols — use 1. 2. 3. for the steps. No markdown. Keep it human, not corporate.`;
 
   try {
-    const workerUrl = 'https://lingering-cake-4cd3quiet-social.kuveili3.workers.dev/?message=' + encodeURIComponent(prompt);
+    const style = answers[0] || 'unknown';
+    const area = answers[1] || 'unknown';
+    const interest = answers[2] || 'unknown';
+    const struggle = answers[3] || 'unknown';
+    const msg = 'You are The Quiet Social, a warm London friendship coach for ages 20-35. A user shared: Social style: ' + style + '. Area: ' + area + '. Interest: ' + interest + '. Struggle: ' + struggle + '. Write them a personalised 180 word friendship action plan with 3 specific steps for their part of London. Be warm, direct and human.';
+    const workerUrl = 'https://lingering-cake-4cd3quiet-social.kuveili3.workers.dev/?message=' + encodeURIComponent(msg);
     const res = await fetch(workerUrl, { method: 'GET' });
     const raw = await res.text();
     const data = JSON.parse(raw);
