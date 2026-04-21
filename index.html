@@ -545,7 +545,7 @@ Write in second person, warm and direct. No bullet symbols — use 1. 2. 3. for 
   try {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'x-api-key': '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', 'anthropic-version': '2023-06-01' },,
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 1000,
